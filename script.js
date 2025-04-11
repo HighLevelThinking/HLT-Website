@@ -16,7 +16,7 @@ $(document).ready(function () {
             $(this).css('background-color', 'white').css('color', 'black');
         })
         .click(function () {
-            $('#upload-button').text('Upload');
+            $('#upload-button').empty();
         })
 
 
