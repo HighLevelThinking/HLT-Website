@@ -20,6 +20,7 @@
   background-image: url('images/Learn-to-Code.jpg');
   font-family: 'Roboto Mono', monospace;
   font-size: 100px;  
+  line-height: 10px;
 } 
 
 .textbox {
@@ -34,14 +35,14 @@
   height: 10%;
   background-color: #39304A;
   font-family: 'Roboto Mono', monospace;
-  font-size: 30px;  
+  font-size: 30px;
 }
 
 .image {
   align-self: right;
   padding: 20px 0px;
   border-radius: 10px;
-  width: 50%;
+  width: 40%;
   height: 10%;
   font-size: 100px;
 }
