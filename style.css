@@ -46,7 +46,7 @@
   line-height: 110px;
 } 
 
-.text-box {
+.text-box-hlm {
   margin: 20px 0px;
   color: var(--bakground);
   text-align: center;
@@ -54,7 +54,7 @@
   align-self: center;
   border-style: solid;
   border-radius: 10px;
-  width: 99%;
+  width: 49.5%;
   height: 10%;
   background-color: var(--foreground-1);
   font-family: 'Share Tech Mono';
@@ -62,12 +62,27 @@
 }
 
 .image {
-  margin: 0px 4px;
+  padding: 0px 0px;
+  margin: 0px auto;
   align-self: auto;
   border-radius: 10px;
-  width: 45.9%;
+  width: 99%;
   height: 10%;
   font-size: 100px;
+}
+
+.text-box-hls {
+  margin: -1232px 930px;
+  color: var(--bakground);
+  text-align: center;
+  padding-left: 10px;
+  align-self: center;
+  border-radius: 10px;
+  width: 49.5%;
+  height: 10%;
+  background-color: var(--foreground-1);
+  font-family: 'Share Tech Mono';
+  font-size: 30px;
 }
 
 body {
