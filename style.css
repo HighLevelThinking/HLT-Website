@@ -42,7 +42,7 @@
   height: 10%;
   background-image: url('images/title-box-image.jpg');
   font-family: 'Roboto Mono', monospace;
-  font-size: 100px;  
+  font-size: 100px;
   line-height: 110px;
 } 
 
@@ -50,7 +50,8 @@
   margin: 20px 0px;
   color: var(--bakground);
   text-align: center;
-  padding-left: 10px;
+  padding-left: 0px;
+  padding-right: 0px;
   align-self: center;
   border-style: solid;
   border-radius: 10px;
