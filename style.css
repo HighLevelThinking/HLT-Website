@@ -20,7 +20,7 @@
 
 @font-face {
   font-family: 'Share Tech Mono'; /* Choose a unique name for your font */
-  src: url('fonts/ShareTechMono-Regular.ttf') format('monospace');
+  src: url('fonts/ShareTechMono-Regular.ttf') format('truetype');
 }
 
 .upload {
@@ -61,7 +61,7 @@
   width: 49.5%;
   height: 10%;
   background-color: var(--foreground-1);
-  font-family: 'Share Tech Mono';
+  font-family: 'Share Tech Mono', monospace;
   font-size: 30px;
 }
 
@@ -82,7 +82,7 @@
   width: 49.5%;
   height: 10%;
   background-color: var(--foreground-1);
-  font-family: 'Share Tech Mono';
+  font-family: 'Share Tech Mono', monospace;
   font-size: 30px;
 }
 
