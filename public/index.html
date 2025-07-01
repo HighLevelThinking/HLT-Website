@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HLT Home</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h2>HLT official website</h2>
+    <button onclick="showPopup()" id="secretBox">Show Popup</button>
+    <a href="login.html" class="login-button" id="loginButton">Login</a>
+  </header>
+  <h1>Higher Level Thinking - HLT</h1>
+  <div class="info-container">
+    <div class="info-box">
+      <h2>HLM - Making stuff</h2>
+      <p>HLM is our branch about making stuff and allowing you to get it easily</p>
+    </div>
+    <div class="info-box">
+      <h2>HLS - All software</h2>
+      <p>HLS is our branch all about software development, it makes stuff like this website and video games</p>
+    </div>
+  </div>
+  <div class="popup" id="popup">
+    <h2>Hello!</h2>
+    <p>This is a popup. Click outside to close.</p>
+    <button onclick="hidePopup()">Close</button>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
