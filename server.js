@@ -29,9 +29,9 @@ const path = require('path');
 
 app.get('/admin.html', (req, res) => {
   if (req.session && req.session.user) {
-    res.sendFile(path.join(__dirname, 'public', 'secret.html'));
+    res.sendFile(path.join(__dirname, 'admin.html'));
   }
-  return res.status(401);
+  return res.status(404);
 });
 
 const db = new sqlite3.Database('users.db');
