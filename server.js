@@ -32,7 +32,7 @@ app.get('/admin.html', (req, res) => {
   if (req.session && req.session.user) {
     return res.sendFile(path.join(__dirname, 'admin.html'));
   }
-  return res.status(404).send("Cannot GET /admin.htmlol");
+  return res.status(404).send("Cannot GET /admin.html");
 });
 
 app.get('/debug-session', (req, res) => {
@@ -41,7 +41,7 @@ app.get('/debug-session', (req, res) => {
 
 const db = new sqlite3.Database('users.db');
 
-// Create table and test user
+// todo: make it so there is 2 new items: name, level (1: basic employee, 2: boss, 3: manager, 4: leader, 5: CEO (IT would probably have level 4 or 3))
 db.run(`CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY, username TEXT UNIQUE, password TEXT, email TEXT)`);
 (async () => {
   const hash = await bcrypt.hash("password", saltRounds);
@@ -84,5 +84,18 @@ app.post('/adduser', async (req, res) => {
   }
   return res.json({ success: true})
 });
+
+app.get('/check-user', (req, res) => {
+  return new Promise((resolve, reject) => {
+    db.all("SELECT * FROM users", [], (err, rows) => {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(rows); // rows is an array of user objects
+      }
+    });
+  });
+});
+
 
 app.listen(3000, '192.168.14.61', () => console.log('Server running on http://192.168.14.61:3000'));

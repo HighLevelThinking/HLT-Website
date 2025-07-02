@@ -126,3 +126,8 @@ async function handleAddition(button){
         output.classList.add("error");
     }
 }
+
+//todo: add function to add <li> with username, password, and remove account button
+async function loadUsers(list) {
+    
+}
