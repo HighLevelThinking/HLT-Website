@@ -37,7 +37,7 @@
   text-align: center;
   align-self: center;
   padding: 30px 8px;
-  margin: -8px -8px;
+  margin: 0px 0px;
   width: 100%;
   height: 10%;
   background-image: url('images/title-box-image.jpg');
@@ -47,15 +47,11 @@
 } 
 
 .text-box-hlm {
-  margin: 20px 0px;
   color: var(--bakground);
   text-align: center;
-  padding-left: 10px;
-  align-self: center;
-  border-style: solid;
+  margin: 1%;
+  width: 40%;
   border-radius: 10px;
-  width: 49.5%;
-  height: 10%;
   background-color: var(--foreground-1);
   font-family: 'Share Tech Mono';
   font-size: 30px;
@@ -72,14 +68,11 @@
 }
 
 .text-box-hls {
-  margin: -1232px 930px;
   color: var(--bakground);
   text-align: center;
-  padding-left: 10px;
-  align-self: center;
+  margin: 1%;
+  width: 40%;
   border-radius: 10px;
-  width: 49.5%;
-  height: 10%;
   background-color: var(--foreground-1);
   font-family: 'Share Tech Mono';
   font-size: 30px;
@@ -87,4 +80,5 @@
 
 body {
   background-color: var(--bakground);
+  display: inline;
 }
