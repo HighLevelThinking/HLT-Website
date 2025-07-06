@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>HLT admin page</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js"></script>
+  </style>
+</head>
+<body>
+
+  <header>
+    <h2>HLT official website</h2>
+  </header>
+
+  <h1>Add user</h1>
+
+  <div class="signin-box">
+    <input type="email" placeholder="Email" id="email">
+    <input type="text" placeholder="Username" id="uname">
+    <input type="password" placeholder="Password" id="pass-one">
+    <input type="password" placeholder="Confirm Password" id="pass-two">
+    <button class="login-button login" onclick="handleAddition(this)">Login</button>
+    <div id="result"></div>
+  </div>
+
+  <div id="userlist">
+    <!--Its gonna go: username, email, remove-->
+  </div>
+
+</body>
+</html>
