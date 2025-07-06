@@ -1,6 +1,6 @@
 async function handleLogin(button) {
     const output = document.getElementById("result");
-    const username = document.getElementById("uname").value.trim();
+    const username = document.getElementById("uname").value;
     const password = document.getElementById("pass").value;
 
     // Reset message
@@ -18,7 +18,7 @@ async function handleLogin(button) {
     setTimeout(() => button.classList.remove("submit"), 400);
 
     try {
-    const response = await fetch('http://192.168.14.61:3000/check-user', {
+    const response = await fetch('http://localhost:3000/check-user', {
         method: 'POST',
         headers: {
         'Content-Type': 'application/json'
@@ -45,7 +45,7 @@ async function handleLogin(button) {
 }
 
 window.onload = async () => {
-  const res = await fetch('http://192.168.14.61:3000/is-signed-in', {
+  const res = await fetch('http://localhost:3000/is-signed-in', {
     credentials: 'include'
   });
   const result = await res.json();
@@ -67,8 +67,8 @@ function hidePopup() {
 async function handleAddition(button){
     const output = document.getElementById("result");
     const username = document.getElementById("uname").value.trim();
-    const password = document.getElementById("pass-one").value;
-    const passwordConfirm = document.getElementById("pass-two").value;
+    const password = document.getElementById("pass").value;
+    const passwordConfirm = document.getElementById("pass-conf").value;
     const email = document.getElementById("email").value;
 
     // Reset message
@@ -101,7 +101,7 @@ async function handleAddition(button){
     console.log('username ', username, ' password ', password, ' email', email)
 
     try {
-    const response = await fetch('http://192.168.14.61:3000/adduser', {
+    const response = await fetch('http://localhost:3000/adduser', {
         method: 'POST',
         headers: {
         'Content-Type': 'application/json'
@@ -128,6 +128,52 @@ async function handleAddition(button){
 }
 
 //todo: add function to add <li> with username, password, and remove account button
-async function loadUsers(list) {
-    
+async function loadUsers() {
+  const table = document.querySelector("table");
+
+  const res = await fetch('http://localhost:3000/get-users', {
+    credentials: 'include'
+  });
+
+  const result = await res.json();
+  if (!result.success) return;
+
+  const users = result.users;
+
+  // Build rows and append
+  users.forEach(user => {
+    const row = document.createElement("tr");
+    row.innerHTML = `
+      <td>${user.id}</td>
+      <td>${user.username}</td>
+      <td>${user.email}</td>
+      <td>${user.name}</td>
+      <td>${user.level}</td>
+      <td><button onclick="removeUser(${user.id})">Remove</button></td>
+    `;
+    table.appendChild(row);
+  });
 }
+
+async function removeUser(id) {
+  try {
+    const response = await fetch('http://localhost:3000/adduser', {
+        method: 'POST',
+        headers: {
+        'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({id})
+    });
+    if (response.status) {
+        alert("Server error, could not remove.");
+    } else {
+        alert(`Removed user with id of ${id}.`);
+    }
+  } catch (err) {
+    alert(`Error: ${err}`);
+  }
+}
+
+window.addEventListener('DOMContentLoaded', () => {
+  loadUsers();
+});

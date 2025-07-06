@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Simple Page</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script> <!-- Defer fixes early execution -->
+</head>
+<body>
+
+  <header>
+    <h2>HLT official website</h2>
+  </header>
+
+  <h1>HLT - Staff Addition</h1>
+
+  <div class="signin-box">
+    <input type="text" placeholder="Username" id="uname">
+    <input type="password" placeholder="Password" id="pass">
+    <input type="password" placeholder="Confirm Password" id="pass-conf">
+    <input type="email" placeholder="Email" id="email">
+    <input type="text" placeholder="Full name" id="name">
+    <input type="number" placeholder="Ranking" id="level">
+    <button class="login-button login" onclick="handleAddition(this)">Add User</button>
+    <div id="result"></div>
+  </div>
+
+  <div>
+    <table>
+        <tr>
+        <th>ID</th>
+        <th>Username</th>
+        <th>Email</th>
+        <th>Name</th>
+        <th>Ranking</th>
+        <th>Remove</th>
+        </tr>
+    </table>
+  </div>
+</body>
+</html>
