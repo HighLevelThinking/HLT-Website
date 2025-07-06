@@ -160,3 +160,15 @@ h1 {
 .info-box h2 {
   margin-top: 0;
 }
+
+table {
+  width: auto;            /* Shrink to content width */
+  border-collapse: collapse;
+  margin: 0 auto;         /* Center table horizontally (optional) */
+}
+
+th, td {
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  white-space: nowrap;    /* Prevent cells from wrapping */
+}
