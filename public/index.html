@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>HLT Home</title>
   <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdn.snipcart.com/themes/v3.0.31/default/snipcart.css" />
 </head>
 <body>
   <header>
@@ -29,5 +30,28 @@
     <button onclick="hidePopup()">Close</button>
   </div>
   <script src="script.js"></script>
+
+  <h1>Welcome to My Mod Shop</h1>
+
+  <!-- Example product -->
+  <div class="product">
+    <h2>Terraria Modded Gear Pack</h2>
+    <p>A bundle of cool modded accessories for pre-hardmode adventurers.</p>
+    <p><strong>$4.99</strong></p>
+    <button class="snipcart-add-item"
+      data-item-id="modded-pack-001"
+      data-item-price="4.99"
+      data-item-url="/"
+      data-item-description="Modded accessories bundle"
+      data-item-name="Terraria Modded Gear Pack">
+      Add to Cart
+    </button>
+  </div>
+
+  <!-- The actual cart UI -->
+  <div hidden id="snipcart" data-api-key="OTE2ZGQ1YTAtNmUwYy00MzVlLWJjOTEtOTFmMWVkNDdkNjdiNjM4ODgwNTY0MTMxODY4OTE1"></div>
+
+  <!-- Snipcart script -->
+  <script async src="https://cdn.snipcart.com/themes/v3.0.31/default/snipcart.js"></script>
 </body>
 </html>
