@@ -18,7 +18,7 @@ async function handleLogin(button) {
     setTimeout(() => button.classList.remove("submit"), 400);
 
     try {
-    const response = await fetch('http://localhost:3000/check-user', {
+    const response = await fetch('http://127.0.0.1:5500/check-user', {
         method: 'POST',
         headers: {
         'Content-Type': 'application/json'
@@ -45,7 +45,7 @@ async function handleLogin(button) {
 }
 
 window.onload = async () => {
-  const res = await fetch('http://localhost:3000/is-signed-in', {
+  const res = await fetch('http://127.0.0.1:5500/is-signed-in', {
     credentials: 'include'
   });
   const result = await res.json();
@@ -101,7 +101,7 @@ async function handleAddition(button){
     console.log('username ', username, ' password ', password, ' email', email)
 
     try {
-    const response = await fetch('http://localhost:3000/adduser', {
+    const response = await fetch('http://127.0.0.1:5500/adduser', {
         method: 'POST',
         headers: {
         'Content-Type': 'application/json'
@@ -131,7 +131,7 @@ async function handleAddition(button){
 async function loadUsers() {
   const table = document.querySelector("table");
 
-  const res = await fetch('http://localhost:3000/get-users', {
+  const res = await fetch('http://127.0.0.1:5500/get-users', {
     credentials: 'include'
   });
 
@@ -157,7 +157,7 @@ async function loadUsers() {
 
 async function removeUser(id) {
   try {
-    const response = await fetch('http://localhost:3000/adduser', {
+    const response = await fetch('http://127.0.0.1:5500/adduser', {
         method: 'POST',
         headers: {
         'Content-Type': 'application/json'

@@ -29,5 +29,23 @@
     <button onclick="hidePopup()">Close</button>
   </div>
   <script src="script.js"></script>
+
+  <!-- Add this to your HTML head -->
+<script async src="https://cdn.snipcart.com/themes/v3.0.31/default/snipcart.js"></script>
+<link rel="stylesheet" href="https://cdn.snipcart.com/themes/v3.0.31/default/snipcart.css" />
+
+<!-- Snipcart initialization -->
+<div hidden id="snipcart" data-api-key="YOUR_PUBLIC_API_KEY"></div>
+
+<!-- Example Add to Cart -->
+<button class="snipcart-add-item"
+  data-item-id="game1"
+  data-item-name="Cool Terraria Mod"
+  data-item-price="9.99"
+  data-item-url="/"
+  data-item-description="Modded gear pack">
+  Add to Cart
+</button>
+
 </body>
 </html>

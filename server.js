@@ -11,7 +11,7 @@ const saltRounds = 12;
 
 // Middleware setup
 app.use(cors({
-  origin: ['http://localhost:3000', 'http://127.0.0.1:3000', 'http://localhost:3000'],
+  origin: ['http://127.0.0.1:5500', 'http://127.0.0.1:5500', 'http://127.0.0.1:5500'],
   credentials: true
 }));
 app.use(express.json());
@@ -154,6 +154,6 @@ app.post('/remove-user', (req, res) => {
 });
 
 // Start server
-app.listen(3000, 'localhost', () => {
-  console.log('Server running on http://localhost:3000');
+app.listen(5500, '127.0.0.1', () => {
+  console.log('Server running on http://127.0.0.1:5500');
 });
