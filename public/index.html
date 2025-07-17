@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>HLT Home</title>
   <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdn.snipcart.com/themes/v3.0.31/default/snipcart.css" />
 </head>
 <body>
   <header>
@@ -30,22 +31,27 @@
   </div>
   <script src="script.js"></script>
 
-  <!-- Add this to your HTML head -->
-<script async src="https://cdn.snipcart.com/themes/v3.0.31/default/snipcart.js"></script>
-<link rel="stylesheet" href="https://cdn.snipcart.com/themes/v3.0.31/default/snipcart.css" />
+  <h1>Welcome to My Mod Shop</h1>
 
-<!-- Snipcart initialization -->
-<div hidden id="snipcart" data-api-key="YOUR_PUBLIC_API_KEY"></div>
+  <!-- Example product -->
+  <div class="product">
+    <h2>Terraria Modded Gear Pack</h2>
+    <p>A bundle of cool modded accessories for pre-hardmode adventurers.</p>
+    <p><strong>$4.99</strong></p>
+    <button class="snipcart-add-item"
+      data-item-id="modded-pack-001"
+      data-item-price="4.99"
+      data-item-url="/"
+      data-item-description="Modded accessories bundle"
+      data-item-name="Terraria Modded Gear Pack">
+      Add to Cart
+    </button>
+  </div>
 
-<!-- Example Add to Cart -->
-<button class="snipcart-add-item"
-  data-item-id="game1"
-  data-item-name="Cool Terraria Mod"
-  data-item-price="9.99"
-  data-item-url="/"
-  data-item-description="Modded gear pack">
-  Add to Cart
-</button>
+  <!-- The actual cart UI -->
+  <div hidden id="snipcart" data-api-key="OTE2ZGQ1YTAtNmUwYy00MzVlLWJjOTEtOTFmMWVkNDdkNjdiNjM4ODgwNTY0MTMxODY4OTE1"></div>
 
+  <!-- Snipcart script -->
+  <script async src="https://cdn.snipcart.com/themes/v3.0.31/default/snipcart.js"></script>
 </body>
 </html>

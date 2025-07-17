@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HLT Home</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdn.snipcart.com/themes/v3.0.31/default/snipcart.css" />
+</head>
+<body>
+  <h1>Welcome to a hand crafted goods shop</h1>
+
+  <!-- Example product -->
+
+  <h2>Text engraved cutting board</h2>
+  <p>High quality cutting boards engraved with nce lines of text</p>
+
+  <div class="product">
+    <h3>"Slice and Dice" cutting board</h3>
+    <p>A good cutting board engraved with Slice and Dice</p>
+    <p><strong>$4.99</strong></p>
+    <button class="snipcart-add-item"
+      data-item-id="cutting-board-slice-and-dive"
+      data-item-price="4.99"
+      data-item-url="/"
+      data-item-description="High quality cutting board"
+      data-item-name="Slice and Dice cutting board">
+      Add to Cart
+    </button>
+  </div>
+
+  <!-- The actual cart UI -->
+  <div hidden id="snipcart" data-api-key="OTE2ZGQ1YTAtNmUwYy00MzVlLWJjOTEtOTFmMWVkNDdkNjdiNjM4ODgwNTY0MTMxODY4OTE1"></div>
+
+  <!-- Snipcart script -->
+  <script async src="https://cdn.snipcart.com/themes/v3.0.31/default/snipcart.js"></script>
+</body>
+</html>
