@@ -1,5 +1,5 @@
-import Header from "./Header";
-import Footer from "./Footer";
+import Header from "../Header";
+import Footer from "../Footer";
 
 function App() {
   return (
@@ -13,7 +13,7 @@ function App() {
       <div id={"desc"}>
         <div className="hlm">
           <h1>HLM:</h1>
-          <body>
+          <body>  
             <p>
               HLM is out making branch Higher Level Making where you can order cutom made products or products we make and design here. We use DTG Printes, LASERS, 3D Printers, Water Jet Cutters, Plasma Cutters, CNCs, and Sublimation Printers. Anything you need to be made can be made here.
             </p>

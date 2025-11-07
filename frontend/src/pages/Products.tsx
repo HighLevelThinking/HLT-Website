@@ -1,13 +1,13 @@
 import Header from "../Header";
 import Footer from "../Footer";
 
-function TOS() {
+function Products() {
   return (
     <>
       <Header />
 
       <div>
-        <h1 id={"top-title"}>Terms of Service</h1>
+        <h1 id={"top-title"}>HLM Products</h1>
       </div>
 
       <Footer />
@@ -15,4 +15,4 @@ function TOS() {
   );
 }
 
-export default TOS;
+export default Products;

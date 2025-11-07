@@ -103,3 +103,7 @@ footer {
         width: 100%;
     }
 }
+
+a:visited {
+    color: blue; /* Must match the color defined for 'a' */
+}
