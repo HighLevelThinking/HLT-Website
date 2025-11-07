@@ -1,9 +1,10 @@
 :root {
-    background-color: rgb(31, 31, 31);
+    background-color: #0B032D;
     font-family: 'Share Tech Mono';
     src: url('assets/ShareTechMono-Regular.ttf') format('truetype');
-    --headerFooterColor: rgb(13, 0, 71);
-    --headerButtonColor: rgb(39, 19, 131);
+    --headerFooterColor: #404070;
+    --headerButtonColor: #4A6FA5;
+    --headerButtonTextColor: #0B032D
 }
 
 li {
@@ -29,7 +30,7 @@ header ul {
     align-self: center;
 }
 
-header h1 {
+header h1 { 
     align-self: center;
     margin-left: 1.5vw;
 }
@@ -40,7 +41,7 @@ header button {
     border-radius: 5px;
     border: none;
     background-color: var(--headerButtonColor);
-    color: rgb(31, 31, 31);
+    color: var(--headerButtonTextColor);
     font-weight: 600;
     width: 150%;
     height: 100%;
@@ -60,17 +61,45 @@ footer {
     display: flex;
     justify-self: center;
     font-size: 50px;
-    line-height: 0.98;
-    letter-spacing: 80px;
     white-space: pre-wrap;
 }
 
-#hlm {
+#desc {
+    display: flex;
+    justify-content: space-between; 
+    width: 100%; 
+    padding: 0;
+    margin-bottom: 1vh;
+    gap: 1vh; 
+}
+
+.hlm {
+    width: calc(50% - 0.5vh);
+    flex-basis: auto;
     background-color: var(--headerFooterColor);
     border-radius: 10px;
     padding-left: 2vw;
+    padding-right: 2vw;
+    margin: 0;
 }
 
-#hlm p {
-    color: white;
+.hls {
+    width: calc(50% - 0.5vh); 
+    flex-basis: auto;
+    background-color: var(--headerFooterColor);
+    border-radius: 10px;
+    padding-left: 2vw;
+    padding-right: 2vw;
+    margin: 0;
+}
+
+@media (max-width: 750px) {
+    #desc {
+        flex-direction: column;
+        gap: 2vh; 
+    }
+
+    .hlm, .hls {
+        width: 100%;
+    }
 }
