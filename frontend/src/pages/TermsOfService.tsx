@@ -7,7 +7,7 @@ function TOS() {
       <Header />
 
       <div>
-        <h1 id={"top-title"}>Terms of Service</h1>
+        <h1 className={"top-title"}>Terms of Service</h1>
       </div>
 
       <Footer />
