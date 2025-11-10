@@ -1,13 +1,13 @@
 import Header from "../Header";
 import Footer from "../Footer";
 
-function App() {
+function TOS() {
   return (
     <>
       <Header />
 
       <div>
-        <h1 id={"top-title"}>Terms of Service</h1>
+        <h1 className={"top-title"}>Terms of Service</h1>
       </div>
 
       <Footer />
@@ -15,4 +15,4 @@ function App() {
   );
 }
 
-export default App;
+export default TOS;

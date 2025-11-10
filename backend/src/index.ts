@@ -86,6 +86,16 @@ async function getItem(itemID: number): Promise<WithId<Item> | null> {
     return allItems.findOne({_id: itemID});
 }
 
+app.get('/get-items', async (req: Request, res: Response) => {
+    try {
+        const items = await allItems.find().toArray();
+        return res.json(items);
+    } catch (error) {
+        console.error(error);
+        return res.status(500); 
+    }
+});
+
 app.get('/get-cart', async (req: Request, res: Response) => {
     const id = await getNextSequenceValue("carts");
     carts.insertOne({_id:id, items:Array<ItemInCart>()});
