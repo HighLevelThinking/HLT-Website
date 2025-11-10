@@ -9,7 +9,7 @@ function App() {
       <div className={"top-title"}>
         <h1>HLT</h1>
       </div>
-
+      <div>
         <div className="hlm desc">
           <h1>HLM:</h1>
             <p>
@@ -23,6 +23,7 @@ function App() {
               HLS is our software branch where software for out made products and other coding orientsed things are made, like this website. We use a plethera of different programing langauges and can make almost anything you want.
             </p>
         </div>
+      </div>
       <Footer />
     </>
   );
