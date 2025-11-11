@@ -78,13 +78,17 @@ footer {
     width: 100%; 
     padding-bottom: 5vh;
     gap: 1vh; 
-    width: calc(50% - 0.5vh); 
+    width: calc(20%); 
     flex-basis: auto;
     background-color: var(--headerFooterColor);
     border-radius: 10px;
     padding-left: 2vw;
     padding-right: 2vw;
     margin: 0;
+}
+
+.desc.right {
+    float: right;
 }
 
 @media (max-width: 750px) {
