@@ -9,7 +9,8 @@ function App() {
       <div className={"top-title"}>
         <h1>HLT</h1>
       </div>
-      <div>
+
+      <div className="desc-cont">
         <div className="hlm desc">
           <h1>HLM:</h1>
             <p>
@@ -24,6 +25,7 @@ function App() {
             </p>
         </div>
       </div>
+
       <Footer />
     </>
   );
