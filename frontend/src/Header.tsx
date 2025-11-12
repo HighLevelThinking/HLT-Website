@@ -9,6 +9,7 @@ function Header() {
                 <li><button onClick={() => window.location.href = '/'}>About</button></li>
                 <li><button onClick={() => window.location.href = '/products'}>Products</button></li>
                 <li><button onClick={() => window.location.href = '/'}>Software</button></li>
+                <li><img src="../assets/cart-icon.png" /></li>
             </ul>
         </header>
     );
