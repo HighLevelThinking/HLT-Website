@@ -74,17 +74,29 @@ footer {
     white-space: pre-wrap;
 }
 
+.desc-cont {
+    display: flex;
+    margin-bottom: 0.9vw;
+}
+
 .desc {
+    display: grid;
+    place-items: center;
     width: 100%; 
     padding-bottom: 5vh;
     gap: 1vh; 
-    width: calc(50% - 0.5vh); 
+    width: calc(45.5%); 
     flex-basis: auto;
     background-color: var(--headerFooterColor);
     border-radius: 10px;
     padding-left: 2vw;
     padding-right: 2vw;
     margin: 0;
+    color: white;
+}
+
+.desc.right {
+    margin-left: auto;
 }
 
 @media (max-width: 750px) {
@@ -95,6 +107,18 @@ footer {
 
     .hlm, .hls {
         width: 100%;
+    }
+
+    .desc {
+        width: calc(44.5%);
+    }
+
+    .desc.right {
+        margin-left: auto;
+    }
+
+    .desc-cont {
+        margin-bottom: 2.4vw;
     }
 }
 
