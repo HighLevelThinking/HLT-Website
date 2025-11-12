@@ -4,7 +4,7 @@ import Footer from "../Footer";
 function App() {
   return (
     <>
-      <Header />
+      <Header/>
 
       <div className={"top-title"}>
         <h1>HLT</h1>
