@@ -3,8 +3,10 @@
     background-color: #0B032D;
     font-family: 'Share Tech Mono', monospace;
     --headerFooterColor: #404070;
-    --headerButtonColor: #4A6FA5;
-    --headerButtonTextColor: #0B032D
+    --buttonColor: #4A6FA5;
+    --buttonTextColor: #0B032D;
+    --buttonPressedColor: #3c5a85;
+    --buttonPressedTextColor: #020109;
 }
 
 li {
@@ -40,16 +42,33 @@ header h1 {
 }
 
 header button {
+    width: 150%;
+    height: 100%;
+    font-size: 15px;
+}
+
+header img {
+    width: 2.5vw;
+    height: 5vh;
+    font-size: 15px;
+}
+
+button {
     cursor: pointer;
     padding: 5px;
     border-radius: 5px;
     border: none;
-    background-color: var(--headerButtonColor);
-    color: var(--headerButtonTextColor);
-    font-weight: 600;
-    width: 150%;
-    height: 100%;
-    font-size: 15px;
+    background-color: var(--buttonColor);
+    color: var(--buttonTextColor);
+}
+
+button:active {
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 5px;
+    border: none;
+    background-color: var(--buttonPressedColor);
+    color: var(--buttonPressedTextColor);
 }
 
 footer {
