@@ -125,3 +125,7 @@ footer {
 a:visited {
     color: blue; /* Must match the color defined for 'a' */
 }
+
+.product-container {
+    color: white;
+}

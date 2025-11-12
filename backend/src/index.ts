@@ -2,10 +2,14 @@ import express, { Request, Response } from 'express'; // FIX 1: Import Request a
 import { MongoClient, Collection, WithId, Document, FindOneAndUpdateOptions } from 'mongodb'; // FIX 2: Better type imports
 
 const app = express();
+const cors = require('cors');
 const port = 3000;
 
 // FIX 3: Add express.json() middleware to parse request bodies
 app.use(express.json());
+app.use(cors({
+  origin: 'http://localhost:5173'
+}));
 
 // --- Interfaces ---
 
