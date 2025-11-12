@@ -110,7 +110,6 @@ const ProductList: React.FC<ProductListProps> = ({ productsUrl }) => {
     // 3. HandleClick function (FIXED)
     const handleClick = async (itemId: number) => {
         // Clear previous feedback for this item immediately
-        setFeedback(prev => ({ ...prev, [itemId]: undefined }));
 
         const result = await addToCart(itemId);
         
@@ -118,7 +117,6 @@ const ProductList: React.FC<ProductListProps> = ({ productsUrl }) => {
             setFeedback(prev => ({ ...prev, [itemId]: 'success' }));
             // Optional: Hide success message after a few seconds
             setTimeout(() => {
-                setFeedback(prev => ({ ...prev, [itemId]: undefined }));
             }, 3000);
         } else {
             setFeedback(prev => ({ ...prev, [itemId]: 'error' }));
