@@ -109,6 +109,19 @@ app.get('/get-cart', async (req: Request, res: Response) => {
     res.status(201).send(id);
 });
 
+app.get('/get-cart-items', async (req: Request, res: Response) => {
+    const cartID =  Number(req.query.cartID);
+    try {
+        const cartItems = await carts.find({ _id: cartID }).toArray(); 
+        // The MongoDB query { cartID: cartID } finds all items belonging to that cart.
+
+        return res.json(cartItems[0]);
+    } catch (error) {
+        console.error(error);
+        return res.status(500); 
+    }
+});
+
 app.post('/add-to-cart', async (req: Request<{}, {}, { itemID: number, itemCount: number, cartId: number }>, res: Response) => {
     // Destructure properties from the parsed request body
     const { itemID, itemCount, cartId } = req.body;

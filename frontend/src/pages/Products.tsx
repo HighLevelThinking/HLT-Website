@@ -44,13 +44,29 @@ const ProductList: React.FC<ProductListProps> = ({ productsUrl }) => {
       }
     };
 
-    fetchProducts();
-  }, [productsUrl]); // Depend on productsUrl so fetching re-runs if URL changes
+        fetchProducts();
+    }, [productsUrl]);
 
-  // 3. Handle loading and error states in the render output
-  if (loading) {
-    return <div className="centered">Loading products...</div>;
-  }
+    // 3. HandleClick function (FIXED)
+    const handleClick = async (itemId: number) => {
+        // Clear previous feedback for this item immediately
+
+        const result = await addToCart(itemId);
+        
+        if (result) {
+            setFeedback(prev => ({ ...prev, [itemId]: 'success' }));
+            // Optional: Hide success message after a few seconds
+            setTimeout(() => {
+            }, 3000);
+        } else {
+            setFeedback(prev => ({ ...prev, [itemId]: 'error' }));
+        }
+    };
+
+    // 4. Handle loading and error states in the render output
+    if (loading) {
+        return <div className="centered">Loading products...</div>;
+    }
 
   if (error) {
     return <div className="centered" style={{ color: 'red' }}>Error: {error}</div>;
