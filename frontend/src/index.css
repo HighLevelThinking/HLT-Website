@@ -33,6 +33,19 @@ header {
     height: 10vh;
 }
 
+.cartBox {
+    background-color: var(--headerFooterColor);
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.cartImage {
+    width: 50%;
+    height: 50%;
+    padding: 1%;
+}
+
 header ul {
     align-self: center;
 }

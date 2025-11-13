@@ -1,9 +1,19 @@
+import React, { useState, useEffect } from 'react'; // 👈 Import hooks
 import Header from "../Header";
 import Footer from "../Footer";
-import { useEffect, useState } from "react";
+import { getCookieValue, setCookieValue } from "../../../cookieFuncs";
 
-interface CartIdProp {
-    cartID: number;
+// --- Types ---
+
+interface Item {
+    _id: number; // Item ID
+    name: string;
+    imageLink: string;
+    description: string;
+    usdCentsPrice: number;
+}
+
+interface ProductListProps {
 }
 
 interface Cart {
@@ -17,25 +27,83 @@ interface ItemInCart {
     info: string;
 }
 
-const CartItems: React.FC<CartIdProp> = ({ cartID }) => {
-    // 1. Initialize state for data and loading/error status
-    const [products, setProducts] = useState<Cart>();
+// --- API Function (Optimized) ---
+
+async function getCartID() {
+    let cartId = Number(getCookieValue("cartId"));
+    if (cartId == 0 || Number.isNaN(cartId)) {
+      const response = await fetch("http://localhost:3000/get-cart");
+      if (!response.ok || !response.body) {
+        console.log("Could not get a cart");
+        return -1;
+      }
+      cartId = Number(await response.text());
+      if (Number.isNaN(cartId)) {
+        console.log("Server returned an invalid cart ID.");
+        return -1;
+      }
+      setCookieValue("cartId",cartId,14);
+    }
+    return cartId;
+}
+
+async function addToCart(itemId: number): Promise<boolean> {
+    const cartID = await getCartID();
+
+    // Use environment variable or relative path in production
+    const url = 'http://localhost:3000/add-to-cart'; 
+    const data = {
+        itemID: itemId,
+        itemCount: 1,
+        cartId: cartId
+    };
+
+    try {
+        const response = await fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify(data)
+        });
+
+        // The key fix: Check response.ok for 2xx status codes
+        // and check for the specific 201 status if required by your API.
+        if (response.ok && response.status === 201) {
+            return true;
+        }
+
+        // Handle other non-success status codes (e.g., 400, 404, 500)
+        console.error(`Add to Cart failed with status: ${response.status}`);
+        return false;
+
+    } catch (error) {
+        // Handle network errors (e.g., cannot connect to server)
+        console.error('Error during POST request:', error);
+        return false;
+    }
+}
+
+// --- ProductList Component (Refactored to use State) ---
+
+const ProductList: React.FC<ProductListProps> = ({  }) => {
+    const [products, setProducts] = useState<Item[]>([]);
+    const [cart, setCart] = useState<Cart>();
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
 
-    // 2. Data Fetching Effect (Remains the same)
     useEffect(() => {
-        // ... (fetchProducts function remains the same as in your original code)
         const fetchProducts = async () => {
             try {
                 setLoading(true);
-                const response = await fetch("http://");
+                const response = await fetch("http://localhost:3000/get-items");
 
                 if (!response.ok) {
                     throw new Error(`Failed to fetch: ${response.statusText}`);
                 }
 
-                const data: Cart = await response.json();
+                const data: Item[] = await response.json();
                 setProducts(data);
             } catch (err: any) {
                 console.error("Fetch Error:", err);
@@ -45,60 +113,53 @@ const CartItems: React.FC<CartIdProp> = ({ cartID }) => {
             }
         };
 
+        const getCart = async () => {
+
+        const cartID = await getCartID();
+        console.log(cartID);
+            try {
+                setLoading(true);
+                const response = await fetch("http://localhost:3000/get-cart-items?cartID="+cartID);
+
+                if (!response.ok) {
+                    throw new Error(`Failed to fetch: ${response.statusText}`);
+                }
+
+                const cart: Cart = await response.json();
+                setCart(cart);
+            } catch (err: any) {
+                console.error("Fetch Error:", err);
+                setError(err.message);
+            } finally {
+                setLoading(false);
+            }
+        };
+
         fetchProducts();
-    }, [cartID]);
+        getCart();
+    }, []);
 
-    // 3. HandleClick function (FIXED)
-    const handleClick = async (itemId: number) => {
-        // Clear previous feedback for this item immediately
-
-        const result = await addToCart(itemId);
-        
-        if (result) {
-            setFeedback(prev => ({ ...prev, [itemId]: 'success' }));
-            // Optional: Hide success message after a few seconds
-            setTimeout(() => {
-            }, 3000);
-        } else {
-            setFeedback(prev => ({ ...prev, [itemId]: 'error' }));
-        }
-    };
-
-    // 4. Handle loading and error states in the render output
     if (loading) {
         return <div className="centered">Loading products...</div>;
     }
 
-    if (error) {
+    if (error || !cart) {
         return <div className="centered" style={{ color: 'red' }}>Error: {error}</div>;
     }
 
-    // 5. Render the list (FIXED UI)
     return (
         <div className="product-container">
-            <h2>🛒 Product List</h2>
             <ul>
-                {products.map((item) => {
-                    const itemFeedback = feedback[item._id];
+                {cart.items.map((item, index) => {
                     return (
                         // Removed data-key attribute, not needed for React components
-                        <li key={item._id}>
-                            <img src={"./" + item.imageLink} /><br /><br />
-                            <strong>{item.name}</strong> - {item.description} - ${item.usdCentsPrice / 100} <br /><br />
-                            
-                            <button onClick={() => handleClick(item._id)}>Add to cart</button>
-                            
-                            {/* Display feedback based on state */}
-                            {itemFeedback === 'success' && (
-                                <span className="success" style={{ color: 'green', marginLeft: '10px' }}>
-                                    Added to cart!
-                                </span>
-                            )}
-                            {itemFeedback === 'error' && (
-                                <span className="error" style={{ color: 'red', marginLeft: '10px' }}>
-                                    Could not add to cart
-                                </span>
-                            )}
+                        <li key={index} className='cartBox'> 
+                            <img src={"./" + products[item.itemId].imageLink} className='cartImage'/><br /><br />
+                            <strong>{products[item.itemId].name}</strong> <br />
+                            {products[item.itemId].description}<br />
+                            ${products[item.itemId].usdCentsPrice / 100}<br />
+                            {item.info}<br /><br />
+                            Count in cart: {item.count}
                         </li>
                     );
                 })}
@@ -107,19 +168,23 @@ const CartItems: React.FC<CartIdProp> = ({ cartID }) => {
     );
 };
 
-function Cart() {
-  return (
-    <>
-      <Header />
+// --- Products Component (No changes needed) ---
 
-      <div>
-        <h1 className={"top-title"}>Cart</h1>
-        <CartItems />
-      </div>
+function Products() {
+    const apiUrl = "http://localhost:3000/get-items";
 
-      <Footer />
-    </>
-  );
+    return (
+        <>
+            <Header />
+            <div>
+                <h1 className={"top-title"}>HLM Products</h1>
+                <div className={"centered"}>
+                    <ProductList/>
+                </div>
+            </div>
+            <Footer />
+        </>
+    );
 }
 
-export default Cart;
+export default Products;
