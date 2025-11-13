@@ -1,10 +1,26 @@
 import Header from "../Header";
 import Footer from "../Footer";
 
+function DisplayPopular() {
+
+  return (
+    <>
+      <div className="display-item">
+        
+      </div>
+    </>
+  )
+}
+
 function App() {
   return (
     <>
       <Header/>
+
+
+
+
+
 
       <div className={"top-title"}>
         <h1>HLT</h1>
@@ -25,6 +41,22 @@ function App() {
             </p>
         </div>
       </div>
+
+
+      <div className="display-items">
+        <div className="display-item-1">
+          
+        </div>
+      </div>
+
+
+
+
+
+
+
+
+
       <Footer />
     </>
   );
