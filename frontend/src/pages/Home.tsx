@@ -44,13 +44,8 @@ function App() {
 
 
       <div className="display-items">
-        <div className="display-item-1">
-          
-        </div>
+        {DisplayPopular()}
       </div>
-
-
-
 
 
 

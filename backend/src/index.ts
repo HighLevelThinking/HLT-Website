@@ -22,6 +22,7 @@ interface Item {
     imageLink: string;
     description: string;
     usdCentsPrice: number;
+    soldCount: number;
 }
 
 interface Cart {

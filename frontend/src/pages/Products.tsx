@@ -11,6 +11,7 @@ interface Item {
     imageLink: string;
     description: string;
     usdCentsPrice: number;
+    soldCount: number;
 }
 
 interface ProductListProps {
@@ -77,6 +78,7 @@ const ProductList: React.FC<ProductListProps> = ({ productsUrl }) => {
     const [products, setProducts] = useState<Item[]>([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
+    const [bestItem, setBestItem] = useState<Item | null>(null);
 
     // New State: To store feedback (success/error) for a specific item
     // Key: itemId, Value: 'success' or 'error'
@@ -103,8 +105,18 @@ const ProductList: React.FC<ProductListProps> = ({ productsUrl }) => {
                 setLoading(false);
             }
         };
+        const findBestItem = () => {
+            products.map((item) => {
+                if (bestItem == null) {
+                    setBestItem(item);
+                } else if (item.soldCount > bestItem.soldCount) {
+                    setBestItem(item)
+                }
+            });
+        }
 
         fetchProducts();
+        findBestItem();
     }, [productsUrl]);
 
     // 3. HandleClick function (FIXED)
@@ -132,9 +144,32 @@ const ProductList: React.FC<ProductListProps> = ({ productsUrl }) => {
         return <div className="centered" style={{ color: 'red' }}>Error: {error}</div>;
     }
 
+    function bestItemHTML() {
+        if (bestItem == null) return <></>;
+        const itemFeedback = feedback[bestItem._id];
+        return (<><h2>Most Sold Item!</h2><br/><br/>
+            <img src={"./" + bestItem.imageLink} /><br /><br />
+            <strong>{bestItem.name}</strong> - {bestItem.description} - ${bestItem.usdCentsPrice / 100} <br /><br />
+            
+            <button onClick={() => handleClick(bestItem._id)}>Add to cart</button>
+            
+            {/* Display feedback based on state */}
+            {itemFeedback === 'success' && (
+                <span className="success" style={{ color: 'green', marginLeft: '10px' }}>
+                    Added to cart!
+                </span>
+            )}
+            {itemFeedback === 'error' && (
+                <span className="error" style={{ color: 'red', marginLeft: '10px' }}>
+                    Could not add to cart
+                </span>
+            )}</>;)
+    }
+
     // 5. Render the list (FIXED UI)
     return (
         <div className="product-container">
+            {bestItemHTML()}
             <h2>🛒 Product List</h2>
             <ul>
                 {products.map((item) => {

@@ -55,7 +55,7 @@ async function addToCart(itemId: number): Promise<boolean> {
     const data = {
         itemID: itemId,
         itemCount: 1,
-        cartId: cartId
+        cartId: cartID
     };
 
     try {
